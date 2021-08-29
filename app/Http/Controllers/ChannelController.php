@@ -23,7 +23,7 @@ class ChannelController extends Controller
 
         auth()->user()->createChannel($attributes);
 
-        return redirect('/');
+        return redirect('/')->with('message', 'Channel created.');
     }
 
     public function edit(Channel $channel)

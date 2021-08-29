@@ -102,6 +102,8 @@
 
     </div>
     @livewireScripts
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.2.4/cdn.js"></script>
+    
 </body>
 
 </html>

@@ -53,7 +53,7 @@ class ChannelPolicy
      */
     public function update(User $user, Channel $channel)
     {
-        //
+        return $user->id === $channel->user_id
     }
 
     /**

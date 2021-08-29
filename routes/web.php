@@ -22,5 +22,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::middleware(['auth'])->group(function () {
     Route::get('/channels/create', [App\Http\Controllers\ChannelController::class, 'create'])->name('channels.create');
     Route::post('/channels', [App\Http\Controllers\ChannelController::class, 'store'])->name('channels.store');
-    Route::get('/channels/edit/{channel}', [App\Http\Controllers\ChannelController::class, 'edit'])->name('channels.edit');
+    
+    Route::get('/channels/edit/{channel}', [App\Http\Controllers\ChannelController::class, 'edit'])
+                                            ->name('channels.edit')
+                                            ->middleware('can:update,channel');
 });
