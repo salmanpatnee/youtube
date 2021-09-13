@@ -18,7 +18,8 @@ class ChannelController extends Controller
         $this->authorize('create', Channel::class);
 
         $attributes = request()->validate([
-            'name'  => 'required|min:3|max:255',
+            'name'        => 'required|min:3|max:255', 
+            'description' => 'nullable|string'
         ]);
 
         auth()->user()->createChannel($attributes);

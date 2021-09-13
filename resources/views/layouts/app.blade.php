@@ -20,6 +20,11 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        span.invalid-feedback {
+            display: inherit;
+        }
+    </style>
     @livewireStyles
 </head>
 
@@ -59,6 +64,9 @@
                             @endif
                         @else
 
+                            <li class="nav-item">
+                                <a href="{{ route('videos.create', Auth::user()->channel) }}" class="nav-link"><i class="fa fa-video-camera" aria-hidden="true"></i></a>
+                            </li>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

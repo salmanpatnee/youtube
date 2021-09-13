@@ -59,6 +59,8 @@ class User extends Authenticatable
         return $this->hasOne(Channel::class);
     }
 
+
+
     public function createChannel($attributes)
     {
         $attributes['uid']  = uniqid(true);

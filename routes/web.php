@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Livewire\Video\EditVideo;
+use App\Http\Livewire\Video\CreateVideo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,4 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/channels/edit/{channel}', [App\Http\Controllers\ChannelController::class, 'edit'])
                                             ->name('channels.edit')
                                             ->middleware('can:update,channel');
+
+    Route::get('/videos/{channel:slug}/create', CreateVideo::class)->name('videos.create');
+    Route::get('/videos/{channel:slug}/edit/{video}', EditVideo::class)->name('videos.edit');
 });

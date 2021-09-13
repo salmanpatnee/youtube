@@ -22,4 +22,12 @@ class Channel extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function videos(){
+      return $this->hasMany(Video::class);
+    }
+    
+    public function getThumbnail(){
+        return isset( $this->thumbnail) ? asset('storage/'. $this->thumbnail) : '/images/default.jpg';
+    }
 }

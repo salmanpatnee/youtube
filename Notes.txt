@@ -1,1 +1,3 @@
 Slug should be editable.
+Add image upload field on create channel page.
+Stop upload if not video file.
