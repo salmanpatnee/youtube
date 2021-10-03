@@ -16,4 +16,16 @@ class Video extends Model
         return $this->belongsTo(Channel::class);
     }
 
+    public function getPosterAttribute(){
+        if($this->thumbnail){
+           return 'storage/videos/' . $this->uid . '/' . $this->thumbnail; 
+        } else {
+            return 'storage/videos/' . 'default.png'; 
+        }
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'uid';
+    }
 }

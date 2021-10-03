@@ -18,6 +18,7 @@ class CreateVideosTable extends Migration
             $table->foreignId('channel_id')->constrained()->onDelete('cascade');
             $table->string('title')->nullable()->default('untitled');
             $table->text('description')->nullable();
+            $table->integer('views')->default(0);
             $table->string('uid');
             $table->string('path')->nullable();
             $table->string('processed_file')->nullable();

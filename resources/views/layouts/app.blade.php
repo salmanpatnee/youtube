@@ -25,6 +25,7 @@
             display: inherit;
         }
     </style>
+    @yield('custom-css')
     @livewireStyles
 </head>
 
@@ -44,7 +45,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                       
+                        @auth
+                            @cannot('create', App\Models\Channel::class)
+                                {{-- <li class="nav-item">
+                                    <a class="nav-link" href="{{route('videos.index', Auth::user()->channel)}}">
+                                        All Videos
+                                    </a>
+                                </li>     --}}
+                            @endcannot
+                        @endauth
+                   
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -63,17 +74,19 @@
                                 </li>
                             @endif
                         @else
-
-                            <li class="nav-item">
-                                <a href="{{ route('videos.create', Auth::user()->channel) }}" class="nav-link"><i class="fa fa-video-camera" aria-hidden="true"></i></a>
-                            </li>
+                        
+                            @cannot('create', App\Models\Channel::class)
+                                <li class="nav-item">
+                                    <a href="{{ route('videos.create', Auth::user()->channel) }}" class="nav-link"><i class="fa fa-video-camera" aria-hidden="true"></i></a>
+                                </li>
+                            @endcannot
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
+                                
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @can('create', App\Models\Channel::class)
                                         <a class="dropdown-item" href="{{ route('channels.create') }}">
@@ -83,6 +96,10 @@
                                         <a class="dropdown-item"
                                             href="{{ route('channels.edit', auth()->user()->channel->id) }}">
                                             {{ __('Your Channel') }}
+                                        </a>
+                                        <a class="dropdown-item"
+                                            href="{{ route('videos.index', auth()->user()->channel->slug) }}">
+                                            {{ __('All Videos') }}
                                         </a>
                                     @endcan
 
@@ -109,6 +126,7 @@
         </main>
 
     </div>
+    @yield('custom-js')
     @livewireScripts
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.2.4/cdn.js"></script>
     

@@ -1,8 +1,19 @@
-<div>
+<div class="container" @if($this->video->processing_percentage < 100) wire:poll @endif>
+
     <form wire:submit.prevent="update">
       
         <x-flash />
 
+        <div class="form-group row d-flex align-items-center justify-content-center">
+            
+            <div class="col-md-6">
+               <img src="{{asset($this->video->poster)}}" alt="Thumbnail" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <p>Processing: ({{$this->video->processing_percentage}})</p>
+             </div>
+        </div>
+        
         <div class="form-group row">
             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
             <div class="col-md-6">

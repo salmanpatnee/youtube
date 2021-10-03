@@ -18,6 +18,7 @@ class EditVideo extends Component
     ];
 
     public function mount($video, $channel){
+    
         $this->video = $video;
         $this->channel = $channel;
     }
