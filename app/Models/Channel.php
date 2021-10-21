@@ -30,4 +30,12 @@ class Channel extends Model
     public function getThumbnail(){
         return isset( $this->thumbnail) ? asset('storage/'. $this->thumbnail) : '/images/default.jpg';
     }
+
+    public function subscriptions(){
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function subscribers(){
+      return $this->subscriptions->count();
+    }
 }

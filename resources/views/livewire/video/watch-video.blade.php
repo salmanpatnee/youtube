@@ -39,6 +39,12 @@
             <livewire:video.voting :video="$video"/>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <livewire:channel.channel-info :channel="$video->channel"/>
+        </div>
+    </div> 
  
 </div>
 @section('custom-js')
