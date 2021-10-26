@@ -8,9 +8,11 @@
             </div>
         </div>
         <div>
+            @if (auth()->check())
             <button wire:click.prevent="subscriptionToggle" class="btn  btn-lg text-uppercase  {{$isSubscribedTo ? 'btn-secondary' : 'btn-danger'}}">
                 {{$isSubscribedTo ? 'Subscribed' : 'Subscribe'}}
             </button>
+            @endif
         </div>
     </div>
 </div>

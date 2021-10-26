@@ -45,7 +45,14 @@
             <livewire:channel.channel-info :channel="$video->channel"/>
         </div>
     </div> 
- 
+    <hr>
+    
+    @auth
+        <livewire:comment.new-comment :video="$video" :key="$video->id"/>    
+    @endauth
+    
+    
+    <livewire:comment.comments :video="$video"/>
 </div>
 @section('custom-js')
 <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>

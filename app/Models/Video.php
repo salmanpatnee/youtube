@@ -35,5 +35,13 @@ class Video extends Model
 
     public function dislikes(){
         return $this->hasMany(Dislike::class);
-      }
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class)->whereNull('reply_id');
+    }
+
+    public function commentsCount(){
+        return $this->hasMany(Comment::class)->count();
+    }
 }
